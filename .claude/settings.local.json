@@ -2,7 +2,16 @@
   "permissions": {
     "allow": [
       "Read(//c/Users/luukz/.claude/skills/**)",
-      "Read(//c/Users/luukz/.claude/plugins/**)"
+      "Read(//c/Users/luukz/.claude/plugins/**)",
+      "Bash(git add:*)",
+      "Bash(git rm:*)",
+      "Bash(git commit:*)",
+      "Bash(npm run:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx eslint:*)",
+      "Bash(npm list:*)",
+      "Read(//tmp/**)"
     ]
   }
 }
