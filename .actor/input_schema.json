@@ -1,0 +1,15 @@
+{
+  "title": "Heading Scraper Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "url": {
+      "title": "URL",
+      "type": "string",
+      "description": "The URL of the page to scrape headings from.",
+      "editor": "textfield",
+      "default": "https://apify.com/"
+    }
+  },
+  "required": ["url"]
+}
