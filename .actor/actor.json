@@ -1,8 +1,8 @@
 {
   "actorSpecification": 1,
-  "name": "documentation-scraper",
-  "title": "Documentation Scraper",
-  "description": "Crawls any documentation site and extracts structured content (title, headings, body text) from each page.",
+  "name": "kompass-dutch-company-scraper",
+  "title": "Kompass Dutch Company Enrichment Scraper",
+  "description": "Scrapes enriched Dutch company data from nl.kompass.com — name, address, employees, revenue, SIC code, and optional contact details.",
   "version": "0.1",
   "input": "./input_schema.json"
 }

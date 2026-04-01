@@ -1,15 +1,48 @@
 {
-  "title": "Heading Scraper Input",
+  "title": "Kompass Dutch Company Scraper Input",
   "type": "object",
   "schemaVersion": 1,
   "properties": {
-    "url": {
-      "title": "URL",
+    "searchQuery": {
+      "title": "Search query",
       "type": "string",
-      "description": "The URL of the page to scrape headings from.",
-      "editor": "textfield",
-      "default": "https://apify.com/"
+      "description": "Company name, SIC keyword, or city to search for.",
+      "editor": "textfield"
+    },
+    "maxItems": {
+      "title": "Max items",
+      "type": "integer",
+      "description": "Maximum number of company records to return.",
+      "default": 100,
+      "maximum": 10000,
+      "minimum": 1,
+      "editor": "number"
+    },
+    "location": {
+      "title": "Location filter",
+      "type": "string",
+      "description": "City or province filter, e.g. 'Rotterdam' or 'Noord-Holland'.",
+      "editor": "textfield"
+    },
+    "sectorCode": {
+      "title": "Sector code",
+      "type": "string",
+      "description": "Kompass sector/SIC filter code.",
+      "editor": "textfield"
+    },
+    "includeContactDetails": {
+      "title": "Include contact details",
+      "type": "boolean",
+      "description": "Scrape phone, email, and website from detail pages. Slower and uses more compute.",
+      "default": false,
+      "editor": "checkbox"
+    },
+    "proxyConfiguration": {
+      "title": "Proxy configuration",
+      "type": "object",
+      "description": "Apify proxy configuration. Auto-populated in Apify Console.",
+      "editor": "proxy"
     }
   },
-  "required": ["url"]
+  "required": ["searchQuery"]
 }
