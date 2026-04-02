@@ -29,7 +29,8 @@ async function getText(page: Page, selector: string): Promise<string | null> {
   const el = await page.$(selector);
   if (!el) return null;
   const text = await el.textContent();
-  return text?.trim() || null;
+  const trimmed = text?.trim();
+  return trimmed != null && trimmed.length > 0 ? trimmed : null;
 }
 
 async function getAttr(page: Page, selector: string, attr: string): Promise<string | null> {

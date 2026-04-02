@@ -75,6 +75,20 @@ describe('extractCompany', () => {
     expect(record.website).toBe('https://testbedrijf.nl');
     expect(record.email).toBe('info@testbedrijf.nl');
   });
+
+  it('falls back to "Unknown" when companyName selector is absent', async () => {
+    await page.setContent('<html><body><span class="city">Amsterdam</span></body></html>');
+    const record = await extractCompany(page, DETAIL_URL, false);
+    expect(record.companyName).toBe('Unknown');
+  });
+
+  it('falls back to full URL as kompassId when URL does not match pattern', async () => {
+    const html = readFileSync(join(__dirname, 'fixtures/detail-page.html'), 'utf-8');
+    await page.setContent(html);
+    const malformedUrl = 'https://nl.kompass.com/some-other-path/';
+    const record = await extractCompany(page, malformedUrl, false);
+    expect(record.kompassId).toBe(malformedUrl);
+  });
 });
 
 describe('extractSearchLinks', () => {
