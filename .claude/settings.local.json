@@ -11,7 +11,13 @@
       "Bash(npx tsc:*)",
       "Bash(npx eslint:*)",
       "Bash(npm list:*)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "Bash(npm test:*)",
+      "Bash(git -C /c/Users/luukz/source/repos/LuukZout/apify-actor log --oneline e553bf3..00eba41)",
+      "Bash(git -C /c/Users/luukz/source/repos/LuukZout/apify-actor diff e553bf3..00eba41 --name-only)",
+      "Bash(git -C /c/Users/luukz/source/repos/LuukZout/apify-actor log --oneline ab1e4fb..83bf068)",
+      "Bash(git -C /c/Users/luukz/source/repos/LuukZout/apify-actor diff ab1e4fb..83bf068 --name-only)",
+      "Bash(apify --version)"
     ]
   }
 }
