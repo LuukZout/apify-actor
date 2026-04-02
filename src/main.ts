@@ -11,10 +11,13 @@ function buildSearchUrl(query: string, location: string | undefined, page: numbe
   return `https://nl.kompass.com/r/nl/nl/?${params.toString()}`;
 }
 
-(async () => {
-  await Actor.main(async () => {
+Actor.main(async () => {
     const rawInput = await Actor.getInput();
     const input = validateInput(rawInput);
+
+    if (input.sectorCode) {
+      log.warning('sectorCode input is set but not yet wired into the search URL — the filter will not be applied. Update buildSearchUrl once the Kompass URL parameter name is confirmed.');
+    }
 
     const proxyConfiguration = await createProxyConfiguration(input.proxyConfiguration);
 
@@ -38,7 +41,10 @@ function buildSearchUrl(query: string, location: string | undefined, page: numbe
       ],
     });
 
-    await Actor.setValue('itemCount', 0);
+    const existingCount = await Actor.getValue<number>('itemCount');
+    if (existingCount === null) {
+      await Actor.setValue('itemCount', 0);
+    }
 
     const startUrl = buildSearchUrl(input.searchQuery, input.location, 1);
     log.info('Starting Kompass scrape', {
@@ -53,4 +59,3 @@ function buildSearchUrl(query: string, location: string | undefined, page: numbe
     const itemCount = (await Actor.getValue<number>('itemCount')) ?? 0;
     log.info('Scrape complete', { itemsEnqueued: itemCount });
   });
-})();
